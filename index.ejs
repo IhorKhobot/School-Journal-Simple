@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>School Journal</title>
+</head>
+<body>
+    <div class="main">
+        <form action="/find" METHOD="POST">
+            <input class="input" type="text" placeholder="Enter student's full name" name="fullname">
+            <input class="submit" type="submit" value="Find">
+        </form>
+        <span>
+            <a href="/newStudent">Add new student</a>
+            <a href="/newGrade">Add new grade</a>
+        </span>
+    </div>
+    
+  
+
+    <%if (locals.subjects && locals.grade && locals.full_name){%>
+    
+        <div class="result">
+            <h3><%=full_name.rows[0].full_name%></h3>
+            <table>
+                <tr>
+                    <td>Subject</td>
+                    <td>Grade</td>
+                </tr>
+                <%for (let i=0; i<subjects.length; i++){%>
+                    <tr>
+                        <td><%=subjects[i].subject%></td>
+                        <td><%=grade[i].mark%></td>
+                    </tr>
+                   
+                    <%}%>
+            </table>
+        </div>
+    
+    <%}%>
+</body>
+</html>
